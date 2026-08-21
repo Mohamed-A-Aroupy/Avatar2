@@ -17,29 +17,32 @@ a{
     color: white;
     text-decoration: none;
 }
+@property --bg-color {
+  syntax: '<color>';          /* بنعرف المتصفح إن المتغير ده نوعه لون */
+  inherits: false;             /* هل العناصر اللي جوه تورث القيمة دي؟ */
+  initial-value: #00000088;    /* القيمة المبدئية */
+}
 .Container{
     background-image: 
-    linear-gradient(to right, #01022de5 30% , #00000088),
-    url(download.webp);
-    background-size: cover;
-    width: 90%;
-    height: 640px;
-}
-.Container:hover{
-    background-image: 
-    linear-gradient(to right, #01022de5 30% , transparent ),
+    linear-gradient(to right, #01022de5 30% , var(--bg-color)),
     url(download.webp);
     background-position: center;
     background-size: cover;
     width: 90%;
     height: 640px;
+    transition: --bg-color 1s ease-in-out;
+}
+.Container:hover{
+   
+    --bg-color: transparent; /* التغير هنا هيحصل بنعومة مش فجأة */
+    
 }
 
 .Header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
 }
 .Logo{
     font-size: 30px;
@@ -78,6 +81,7 @@ a{
     border-radius: 10px;
     border: 2px solid transparent;
     cursor: pointer;
+    margin-top: 20px;
 }
 .Content button:hover{
     border-color: white ; 
